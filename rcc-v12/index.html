@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#14233A"><meta name="rcc-build" content="v12.0-20260815"><title>Retirement Command Center V12</title>
+<link rel="stylesheet" href="style.css"></head><body>
+<header><div class="title">Retirement Command Center · V12</div><div class="pill" id="statusPill">LIVE</div></header><main>
+<section class="hero"><div class="lamp amber" id="lamp">!</div><div><small>RETIREMENT DECISION</small><h1 id="verdictTitle">Calculating…</h1><p id="verdictText"></p></div></section>
+<section class="tiles" id="tiles"></section>
+<section class="panel"><h2>Model provenance</h2><div><span class="tag excel">Excel-parity deterministic</span><span class="tag risk">Calibrated risk estimate</span><span class="tag mc">True Monte Carlo</span><span class="tag assumption">User assumption</span></div><div class="hint">The deterministic account/tax engine remains the audit backbone. Monte Carlo is a separate seeded simulation; the live success score remains a fast calibrated sensitivity model.</div></section>
+<section class="panel"><h2>How your money lasts</h2><div class="hint">Bear, current strategy, and bull deterministic paths. The gold line is your legacy target.</div><canvas id="chart"></canvas></section>
+<section class="panel"><h2>Decision dashboard</h2><div class="decision" id="decision"></div></section>
+<div class="actions"><button class="primary" id="shareBtn">Copy shareable current plan</button><button class="ghost" id="resetBtn">Reset V12 defaults</button></div>
+<section class="panel"><h2>Age & timing</h2><div class="hint">All age controls are editable and validated against each other.</div><div class="grid2" id="timingInputs"></div></section>
+<section class="panel"><h2>Core financial inputs</h2><div class="hint">When actual accounts are confirmed, the proxy portfolio input is no longer used for the starting account mix or the live risk portfolio amount.</div><div class="grid2" id="coreInputs"></div></section>
+<details open><summary>Actual account setup</summary><div class="body"><div class="grid2" id="accountInputs"></div><div id="accountSummary"></div></div></details>
+<details><summary>ACA / pre-Medicare planning</summary><div class="body"><div class="grid2" id="acaInputs"></div><div id="acaSummary"></div><div class="scroll"><table id="acaTable"></table></div><div class="notice">2026 PTC rules use the 2026 applicable-percentage table and generally cap eligibility at 400% of FPL. The model starts 2026 coverage from the 2025 HHS poverty guideline, because PTC eligibility uses the most recently published FPL on the first day of open enrollment. Future years are projected, not known law.</div><div class="hint"><a href="https://www.irs.gov/irb/2025-32_IRB" target="_blank">IRS Rev. Proc. 2025-25</a> · <a href="https://www.irs.gov/credits-deductions/premium-tax-credit-ptc-overview" target="_blank">IRS PTC overview</a> · <a href="https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines/prior-hhs-poverty-guidelines-federal-register-references/2025-poverty-guidelines-computations" target="_blank">2025 HHS poverty guidelines</a></div></div></details>
+<details open><summary>Scenario compare & saved plans</summary><div class="body"><div class="grid3" id="scenarioCards"></div><div class="scroll"><table id="scenarioTable"></table></div></div></details>
+<details open><summary>True Monte Carlo</summary><div class="body"><div class="grid2" id="mcInputs"></div><div class="actions"><button class="secondary" id="runMcBtn">Run Monte Carlo</button></div><div id="mcResults"></div></div></details>
+<details open><summary>Withdrawal & Roth optimizer</summary><div class="body"><div class="grid2" id="optimizerInputs"></div><div id="optimizerSummary"></div><div class="scroll"><table id="optimizerTable"></table></div><div class="actions"><button class="primary" id="applyBestBtn">Apply recommended strategy</button><button class="ghost" id="excelDefaultBtn">Use Excel default strategy</button></div></div></details>
+<details><summary>Stress tests</summary><div class="body"><table id="stressTable"></table></div></details>
+<details open><summary>Validation & Excel parity</summary><div class="body" id="validation"></div></details>
+<details><summary>Year-by-year account / tax ledger</summary><div class="body scroll"><table id="ledger"></table></div></details>
+<details><summary>Model limitations</summary><div class="body"><div class="notice">This is a planning model, not tax-return software or individualized investment advice. Future tax law, ACA rules, Medicare thresholds, returns, inflation, longevity, and healthcare costs can differ materially. Monte Carlo uses seeded lognormal annual return paths with user-selected volatility; it does not forecast markets.</div></div></details>
+</main><footer>Retirement Command Center V12 · deterministic engine + scenario manager + seeded Monte Carlo + Roth/withdrawal strategy analysis + ACA planning</footer>
+<script src="core.js"></script>
+<script src="engine.js"></script>
+<script src="ui.js"></script>
+<script src="render.js"></script></body></html>
